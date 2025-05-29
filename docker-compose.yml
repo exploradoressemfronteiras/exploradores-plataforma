@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    container_name: esf_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: esf_user
+      POSTGRES_PASSWORD: esf_pass
+      POSTGRES_DB: esf_db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
