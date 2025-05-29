@@ -1,13 +1,17 @@
 version: '3.8'
+
 services:
   postgres:
-    image: postgres:15
-    container_name: esf_postgres
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: exploradoressemfronteiras
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: esf_db
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: esf_user
-      POSTGRES_PASSWORD: esf_pass
-      POSTGRES_DB: esf_db
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
